@@ -33,11 +33,11 @@ var Employee = /** @class */ (function () {
         return 50;
     };
     Employee.prototype.getNameWithAddress = function () {
-        return "".concat(this.name, " lives on ").concat(this.address);
+        return "".concat(this.name, " lives on ").concat(this.address.city, " ").concat(this.address.street);
     };
     return Employee;
 }());
-var john = new Employee(1, "John", 'Highway 71');
+var john = new Employee(1, "John", { street: "ABC", city: "Bangalore", state: "Karnataka", pin: "56007" });
 console.log(john.empId);
 john.empId = 100;
 console.log(john.empId);
@@ -50,10 +50,10 @@ var Manager = /** @class */ (function (_super) {
         return _super.call(this, id, name, address) || this;
     }
     Manager.prototype.getNameWithAddress = function () {
-        return "".concat(this.name, " is a manager at ").concat(this.address);
+        return "".concat(this.name, " is a manager at ").concat(this.address.city, " ").concat(this.address.street);
     };
     return Manager;
 }(Employee));
-var mike = new Manager(2, "Mike", "Cherise Drive");
+var mike = new Manager(2, "Mike", { street: "Oakland drive", city: "New York City", state: "New York", pin: "78912" });
 console.log(john.getNameWithAddress());
 console.log(mike.getNameWithAddress());
